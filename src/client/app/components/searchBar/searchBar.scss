@@ -1,0 +1,43 @@
+.search-bar {
+  background-color: #fff159;
+  .btn {
+    background-color: white;
+    height: 38px;
+    border: none;
+    border-left: 1px solid lightgrey;
+  }
+  input[type="text"] {
+    border: none;
+  }
+  .searchContainer {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  ::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: lightgray;
+    opacity: 1; /* Firefox */
+  }
+
+  :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: lightgray;
+  }
+
+  ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: lightgray;
+  }
+  .nav-logo {
+    background-image: url(https://http2.mlstatic.com/ui/navigation/4.4.4/mercadolibre/logo__large_plus.png);
+    height: 34px;
+    top: 11px;
+    width: 134px;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    text-indent: -999px;
+    position: absolute;
+    right: 50px;
+  }
+}

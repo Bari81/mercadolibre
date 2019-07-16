@@ -1,0 +1,14 @@
+.detailContainer {
+  .list-group img {
+    height: 150px;
+    width: 150px;
+  }
+  .panel-body {
+    .w-50 {
+      float: left;
+      img {
+        width: 60%;
+      }
+    }
+  }
+}

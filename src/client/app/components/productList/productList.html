@@ -1,0 +1,28 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Home</li>
+  </ol>
+</nav>
+<div class="row listContainer">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="list-group">
+          <a ng-repeat="plitem in $ctrl.productList.items track by $index"
+            href="#"
+            ng-click="$ctrl.redirectSelectedProduct(plitem)"
+            class="list-group-item list-group-item-action flex-column align-items-start"
+          >
+        <div class="w-25"><img src="{{ plitem.picture }}" /></div>
+            <div class="d-flex w-75 justify-content-between">
+              <h5 class="mb-1">$ {{ plitem.price.amount | currency:"":0 }}</h5>
+              <small>{{ plitem.condition }}</small>
+            </div>
+            <p class="mb-1 w-75">
+              {{ plitem.title }}
+            </p>
+          </a>
+        </div>
+
+    </div>
+  </div>
+</div>
