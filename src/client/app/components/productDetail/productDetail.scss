@@ -3,12 +3,19 @@
     height: 150px;
     width: 150px;
   }
-  .panel-body {
-    .w-50 {
+  .content {
+    background-color: white;
+    padding-top: 70px;
+
+    .imageBox {
       float: left;
       img {
-        width: 60%;
+        width: 300px;
       }
+    }
+    .titleBox {
+      float: left;
+      height: 300px;
     }
   }
 }

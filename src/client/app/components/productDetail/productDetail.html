@@ -5,20 +5,19 @@
 </nav>
 <div class="row detailContainer">
   <div class="col-md-1"></div>
-  <div class="col-md-10">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <div class="w-50">
-          <img
-            src="{{ $ctrl.selectedProduct.picture }}"
-            alt="{{ $ctrl.selectedProduct.title }}"
-          />
-        </div>
-        <div class="w-50">
-          <h2>{{ $ctrl.selectedProduct.title }}</h2>
-          <div>{{ $ctrl.selectedProduct.description.plain_text }}</div>
-        </div>
-      </div>
+  <div class="col-md-10 content">
+    <div class="col-md-5 imageBox">
+      <img
+        src="{{ $ctrl.selectedProduct.picture }}"
+        alt="{{ $ctrl.selectedProduct.title }}"
+      />
+    </div>
+    <div class="col-md-7 titleBox">
+      <h2>{{ $ctrl.selectedProduct.title }}</h2>
+    </div>
+    <div class="col-md-12">
+      {{ $ctrl.selectedProduct.description.plain_text }}
     </div>
   </div>
+  <div class="col-md-1"></div>
 </div>

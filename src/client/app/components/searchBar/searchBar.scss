@@ -5,9 +5,15 @@
     height: 38px;
     border: none;
     border-left: 1px solid lightgrey;
+    &:hover {
+      background-color: grey;
+    }
   }
   input[type="text"] {
     border: none;
+    &:focus {
+      box-shadow: none;
+    }
   }
   .searchContainer {
     margin-top: 10px;
