@@ -22,6 +22,12 @@ export const AppModule = angular
       $locationProvider.html5Mode({
         enabled: true
       });
+      /*
+       * State used by UiRouter to be inserted into the ui-view (app.html)
+       * name: name used by $state.go() in other components
+       * url: url with query param
+       * resolve: call to service and return list of products to the component
+       */
       const listState = {
         name: "results",
         url: "/items/?search={query}",
@@ -31,7 +37,6 @@ export const AppModule = angular
             "MeliDemoService",
             "$transition$",
             (MeliDemoService, $transition$) => {
-              debugger;
               return MeliDemoService.getProductsList(
                 $transition$.params().query
               );
@@ -39,6 +44,12 @@ export const AppModule = angular
           ]
         }
       };
+      /*
+       * State used by UiRouter to be inserted into the ui-view (app.html)
+       * name: name used by $state.go() in other components
+       * url: url with path param
+       * resolve: call to service and return detail of product to the component
+       */
       const detailState = {
         name: "item",
         url: "/items/{id}",

@@ -1,23 +1,35 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item active" aria-current="page">Home</li>
+    <!-- <li class="breadcrumb-item active" aria-current="page"><a ui-sref="home"> Pagina Principal</a></li> -->
   </ol>
 </nav>
 <div class="row detailContainer">
-  <div class="col-md-1"></div>
-  <div class="col-md-10 content">
-    <div class="col-md-5 imageBox">
-      <img
-        src="{{ $ctrl.selectedProduct.picture }}"
-        alt="{{ $ctrl.selectedProduct.title }}"
-      />
+    <div class="col-md-1"></div>
+    <article class="col-md-10 content">
+      <div class = "row">
+        <section class="col-md-6 imageBox">
+          <img
+            src="{{ $ctrl.selectedProduct.picture }}"
+            alt="{{ $ctrl.selectedProduct.title }}"
+          />
+        </section>
+        <section class="col-md-5 titleBox">
+          <h3>{{ $ctrl.selectedProduct.title }}</h3>
+          <h1>$ {{ $ctrl.selectedProduct.price.amount | currency:"":0 }}</h1>
+          <div class="buyButtonContainer">
+            <button class="btn btn-info buyButton">Comprar</button>
+          </div>
+        </section>
+      </div>
+      <div class = "row">
+      <section class="description">
+        <header><h3>Descripci&oacute;n del producto</h3></header>
+        <p>
+        {{ $ctrl.selectedProduct.description.plain_text }}
+      </p>
+      </section>
     </div>
-    <div class="col-md-7 titleBox">
-      <h2>{{ $ctrl.selectedProduct.title }}</h2>
-    </div>
-    <div class="col-md-12">
-      {{ $ctrl.selectedProduct.description.plain_text }}
-    </div>
+    </article>
+    <div class="col-md-1"></div>
   </div>
-  <div class="col-md-1"></div>
 </div>

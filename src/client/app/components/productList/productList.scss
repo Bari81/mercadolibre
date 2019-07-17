@@ -1,14 +1,20 @@
+.listBread {
+  padding-left: 9%;
+}
 .listContainer {
   .list-group {
     a {
       cursor: pointer;
     }
     img {
-      height: 150px;
-      width: 150px;
+      height: 165px;
+      width: 170px;
     }
   }
   .w-25 {
     float: left;
+  }
+  .titleItem {
+    padding-top: 15px;
   }
 }

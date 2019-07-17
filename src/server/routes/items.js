@@ -4,12 +4,15 @@ var request = require("request");
 var https = require("https");
 var responseBuilder = require("../dto/responseBuilder");
 
-/* GET item and description. */
+/**
+ * Return detail of a product based on id path param
+ * Build the response calling to 2 different services
+ * chaining promises response
+ */
 router.get("/:id", function(req, res, next) {
   let itemResponse = {};
   let descriptionResponse = {};
   function buildResponse() {
-    console.log("CALL TO BUILDRESPONSE");
     requestItemPromise(req.params.id).then(function(result) {
       itemResponse = result;
       requestItemDescriptionPromise(req.params.id).then(function(result) {
@@ -55,14 +58,16 @@ function requestItemDescriptionPromise(id) {
       }
     );
     function returnPromise(p) {
-      // console.log("DescriptionPromise: " + p);
       return JSON.parse(p);
     }
   });
 }
 
+/**
+ * Call to responseBuilder to create the item detail object
+ *
+ */
 function buildItem(element, description, callback) {
-  //console.log("DESCRIPTION: " + description);
   let author = {};
   author.name = "Alvaro";
   author.lastname = "Eibes";
@@ -75,10 +80,9 @@ function buildItem(element, description, callback) {
     free_shipping,
     currency_id,
     price,
-    decimals
+    decimals,
+    attributes
   } = element;
-
-  //console.log(id, title, condition, price);
 
   let priceObj = {};
   priceObj.currency = currency_id;
@@ -93,12 +97,17 @@ function buildItem(element, description, callback) {
     .setFree_shipping(free_shipping)
     .setPrice(priceObj)
     .setDescription(description)
+    .setCondition_attr(attributes[1].value_name)
     .build();
 
   callback(itemObj);
 }
 
-//GET list of items
+/**
+ * Return list of items based on query param and
+ * made a callback to return as a json response
+ *
+ */
 router.get("/", function(req, res, next) {
   getJson(req.query.q, function(data) {
     res.json(data);
@@ -121,10 +130,12 @@ router.get("/", function(req, res, next) {
         let author = {};
         author.name = "Alvaro";
         author.lastname = "Eibes";
-
+        debugger;
         let items = [];
+        let counter = 0;
         for (const key in body.results) {
-          if (body.results.hasOwnProperty(key)) {
+          if (body.results.hasOwnProperty(key) && counter < 4) {
+            ++counter;
             const element = body.results[key];
             let {
               id,
@@ -134,7 +145,8 @@ router.get("/", function(req, res, next) {
               free_shipping,
               currency_id,
               price,
-              decimals
+              decimals,
+              attributes
             } = element;
 
             let priceObj = {};
@@ -149,6 +161,7 @@ router.get("/", function(req, res, next) {
               .setCondition(condition)
               .setFree_shipping(free_shipping)
               .setPrice(priceObj)
+              .setCondition_attr(attributes)
               .build();
 
             items.push(itemObj);
@@ -158,6 +171,7 @@ router.get("/", function(req, res, next) {
         let itemsList = new responseBuilder.itemsListBuilder()
           .setAuthor(author)
           .setItems(items)
+          .setAvailable_filters(body.filters[0].values[0].name)
           .build();
 
         callback(itemsList);

@@ -8,5 +8,6 @@ module.exports = class Item {
     this.price = builder.price;
     this.sold_quantity = builder.sold_quantity;
     this.description = builder.description;
+    this.condition_attr = builder.condition_attr;
   }
 };

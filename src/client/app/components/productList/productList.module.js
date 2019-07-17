@@ -1,5 +1,4 @@
 import angular from "angular";
-import uiRouter from "@uirouter/angularjs";
 import { productListComponent } from "./productList.component";
 import "./productList.scss";
 

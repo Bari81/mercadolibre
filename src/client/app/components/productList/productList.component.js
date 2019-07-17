@@ -16,8 +16,11 @@ export const productListComponent = {
     $onInit() {
       this.selectedProductId = "";
     }
+    /**
+     * Change state to item defined in app.module.js with
+     * the param used in state service
+     */
     redirectSelectedProduct(param) {
-      debugger;
       this.selectedProductId = param.id;
       this.$state.go("item", { id: this.selectedProductId });
     }

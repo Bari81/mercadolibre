@@ -1,11 +1,12 @@
 var Item = require("./Item");
-var ItemOfList = require("./ItemOfList");
-
+var ItemsList = require("./ItemsList");
+//Builder used to create objects in response
 module.exports = {
   itemsListBuilder: function() {
     let author;
     let categories;
     let items;
+    let available_filters;
 
     return {
       setAuthor: function(author) {
@@ -20,8 +21,12 @@ module.exports = {
         this.items = items;
         return this;
       },
+      setAvailable_filters(available_filters) {
+        this.available_filters = available_filters;
+        return this;
+      },
       build: function() {
-        return new ItemOfList(this);
+        return new ItemsList(this);
       }
     };
   },
@@ -35,6 +40,7 @@ module.exports = {
     let price;
     let sold_quantity;
     let description;
+    let condition_attr;
 
     return {
       setId: function(id) {
@@ -67,6 +73,10 @@ module.exports = {
       },
       setDescription: function(description) {
         this.description = description;
+        return this;
+      },
+      setCondition_attr: function(condition_attr) {
+        this.condition_attr = condition_attr;
         return this;
       },
       build: function() {

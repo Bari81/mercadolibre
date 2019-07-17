@@ -1,11 +1,11 @@
 <nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item active" aria-current="page">Home</li>
+  <ol class="breadcrumb listBread">
+    <li class="breadcrumb-item active" aria-current="page">Categoria: {{$ctrl.productList.available_filters}}</li>
   </ol>
 </nav>
 <div class="row listContainer">
-  <div class="col-md-2"></div>
-  <div class="col-md-8">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
     <div class="list-group">
           <a ng-repeat="plitem in $ctrl.productList.items track by $index"
             href="#"
@@ -15,9 +15,9 @@
         <div class="w-25"><img src="{{ plitem.picture }}" /></div>
             <div class="d-flex w-75 justify-content-between">
               <h5 class="mb-1">$ {{ plitem.price.amount | currency:"":0 }}</h5>
-              <small>{{ plitem.condition }}</small>
+              <small>{{ plitem.condition_attr[0].value_name }}</small>
             </div>
-            <p class="mb-1 w-75">
+            <p class="mb-1 w-75 titleItem">
               {{ plitem.title }}
             </p>
           </a>
