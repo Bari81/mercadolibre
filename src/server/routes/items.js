@@ -171,7 +171,9 @@ router.get("/", function(req, res, next) {
         let itemsList = new responseBuilder.itemsListBuilder()
           .setAuthor(author)
           .setItems(items)
-          .setAvailable_filters(body.filters[0].values[0].name)
+          .setAvailable_filters(
+            body.filters[0] !== undefined ? body.filters[0].values[0].name : ""
+          )
           .build();
 
         callback(itemsList);

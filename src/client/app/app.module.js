@@ -4,7 +4,7 @@ import { AppComponent } from "./app.component";
 import { ComponentsModule } from "./components/components.module";
 import { productListComponent } from "./components/productList/productList.component";
 import { productDetailComponent } from "./components/productDetail/productDetail.component";
-
+import "bootstrap/dist/css/bootstrap.css";
 import { MeliDemoService } from "./services/app.services";
 import "./app.scss";
 
